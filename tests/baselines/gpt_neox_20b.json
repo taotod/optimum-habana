@@ -14,6 +14,7 @@
                         "--dataset_config_name wikitext-2-raw-v1",
                         "--gradient_checkpointing",
                         "--use_hpu_graphs_for_inference",
+			"--save_last_ckpt False",
                         "--deepspeed tests/configs/deepspeed_zero_2.json"
                     ]
                 }
