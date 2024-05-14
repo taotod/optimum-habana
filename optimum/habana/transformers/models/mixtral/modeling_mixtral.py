@@ -379,7 +379,6 @@ def gaudi_mixtral_block_sparse_moe_forward(self, hidden_states: torch.Tensor) ->
         dist.all_gather(output_tensors, router_logits)
         router_logits = torch.cat(output_tensors, dim=1)
 
-    breakpoint()
     routing_weights = F.softmax(router_logits, dim=1, dtype=torch.float)
     routing_weights, selected_experts = torch.topk(routing_weights, self.top_k, dim=-1)
     routing_weights /= routing_weights.sum(dim=-1, keepdim=True)
